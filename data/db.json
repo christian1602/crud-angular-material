@@ -13,18 +13,6 @@
       "packageOffered": 4500
     },
     {
-      "id": "8e00",
-      "firstName": "Walter",
-      "lastName": "Manrique",
-      "email": "walter@correo.com",
-      "dob": "2024-10-01T05:00:00.000Z",
-      "gender": "male",
-      "education": "Post Graduate",
-      "company": "L105",
-      "experience": 4,
-      "packageOffered": 3600
-    },
-    {
       "id": "58f3",
       "firstName": "Teresa",
       "lastName": "Manrique",
@@ -35,18 +23,6 @@
       "company": "Belleza",
       "experience": 20,
       "packageOffered": 5000
-    },
-    {
-      "firstName": "Liz",
-      "lastName": "Durand",
-      "email": "liz3000@mail.com",
-      "dob": "2024-08-05T05:00:00.000Z",
-      "gender": "female",
-      "education": "Post Graduate",
-      "company": "Beauty",
-      "experience": 5,
-      "packageOffered": 5000,
-      "id": "e75b"
     }
   ]
 }

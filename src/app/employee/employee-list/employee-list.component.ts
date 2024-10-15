@@ -7,6 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Employee } from '../../models/employee.model';
 import { CoreService } from '../../core/core.service';
+import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-employee-list',
@@ -35,6 +36,7 @@ export class EmployeeListComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
+    public confirmationDialog: MatDialog,
     private employeeService: EmployeeService,
     private coreService: CoreService
   ){}
@@ -79,13 +81,22 @@ export class EmployeeListComponent implements OnInit {
   }
 
   deleteEmployee(id: number){
-    this.employeeService.deleteEmployee(id)
+    const confirmationDialog = this.confirmationDialog.open(ConfirmationDialogComponent);
+
+    confirmationDialog.afterClosed()
       .subscribe({
-        next: (() => {
-          this.listEmployees();
-          this.coreService.openSnackBar('Employee deleted!','done');
-        }),
-        error: (err) => console.error(err)
+        next: (isConfirmed) => {
+          if (isConfirmed){
+            this.employeeService.deleteEmployee(id)
+            .subscribe({
+              next: (() => {
+                this.listEmployees();
+                this.coreService.openSnackBar('Employee deleted!','done');
+              }),
+              error: (err) => console.error(err)
+            });
+          }
+        }
       });
   }
 
